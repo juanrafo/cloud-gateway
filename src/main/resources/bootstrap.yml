@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    config:
+      uri: http://host.docker.internal:9000
+      profile: dev
+      enabled: true
