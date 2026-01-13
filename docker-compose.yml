@@ -5,6 +5,11 @@ services:
     image: alpine/java:21-jdk
     container_name: cloud-gateway
     #restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: '1.0'     
     ports:
       - "9090:9090"
     volumes:
