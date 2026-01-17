@@ -4,17 +4,17 @@ import java.util.Optional;
 
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
-import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+import java.util.Optional;
 
 @Component
 public class GlobalFilters implements GlobalFilter{
 
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {  
-        
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+
         String cookieResponse;
 
         Optional<String> mitocodeToken = Optional.ofNullable(exchange.getRequest().getHeaders().getFirst("MITOCODE_TOKEN"));
@@ -31,10 +31,8 @@ public class GlobalFilters implements GlobalFilter{
 
 
         return chain.filter(exchange).then(Mono.fromRunnable(() -> {
-            //exchange.getResponse().getCookies().add("TOKEN", ResponseCookie.from("MITOCODE_TOKEN",cookieResponse).build());
-            }
+                    //exchange.getResponse().getCookies().add("TOKEN", ResponseCookie.from("MITOCODE_TOKEN",cookieResponse).build());
+                }
         ));
-    }    
+    }
 }
-
-
