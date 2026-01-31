@@ -6,3 +6,12 @@ spring:
       uri: http://host.docker.internal:9000
       profile: dev
       enabled: true
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: DEBUG
